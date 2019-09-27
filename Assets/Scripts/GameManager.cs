@@ -35,9 +35,8 @@ public class GameManager : MonoBehaviour
         if (currentSpawnTime > generatedSpawnTime) 
         {
             currentSpawnTime = 0;
+            generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         }
-
-        generatedSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
 
         if (aliensPerSpawn > 0 && aliensOnScreen < totalAliens) //determines whether to spawn or not
         {

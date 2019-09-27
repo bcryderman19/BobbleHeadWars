@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Game Engines/BobbleHeadWars/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

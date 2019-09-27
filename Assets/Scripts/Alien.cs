@@ -32,5 +32,7 @@ public class Alien : MonoBehaviour
     private void OnTriggerEnter(Collider other) //collision event into trigger because alien rigidbody is kinematic
     {
         Destroy(gameObject);
+
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.alienDeath);
     }
 }
