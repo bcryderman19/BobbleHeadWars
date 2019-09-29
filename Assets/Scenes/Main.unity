@@ -405,7 +405,7 @@ MonoBehaviour:
   alien: {fileID: 1083935419275552038, guid: 206e3118c74d89f43931b521ffd07c03, type: 3}
   upgradePrefab: {fileID: 105092, guid: 941d6224549424c91b1cf112b44ec0cb, type: 3}
   gun: {fileID: 1129798630}
-  maxAliensOnScreen: 20
+  maxAliensOnScreen: 10
   totalAliens: 50
   aliensPerSpawn: 3
   minSpawnTime: 0
@@ -773,10 +773,13 @@ MonoBehaviour:
   - 0.1
   - 0.2
   - 0.3
-  head: {fileID: 898643752}
+  timeBetweenHits: 2.5
+  head: {fileID: 1129798631}
+  marineBody: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 4096
+  bodyAnimator: {fileID: 1129798629}
 --- !u!1 &655485427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,6 +1408,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1366138934}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1129798629 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 6cfe165c35d5a774ebe4624ec948e584,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366138934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1129798630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,6 +1544,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &1129798633
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129798628}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 2.08
+  m_Height: 0.24
+  m_Direction: 1
+  m_Center: {x: -1.61, y: 3.58, z: 0}
 --- !u!1001 &1137683568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1806,6 +1829,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 6cfe165c35d5a774ebe4624ec948e584, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d6cb593fe39326340a58290ed3c64390, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cfe165c35d5a774ebe4624ec948e584, type: 3}
 --- !u!4 &1366138935 stripped

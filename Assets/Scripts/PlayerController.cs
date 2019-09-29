@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask layerMask; //what layers the ray should hit
 
+    public Animator bodyAnimator;
+
     private CharacterController characterController;
     private Vector3 currentLookTarget = Vector3.zero; //where you want the marine to look
 
@@ -52,11 +54,12 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (moveDirection == Vector3.zero)
         {
-            // TODO
+            bodyAnimator.SetBool("IsMoving", false);
         }
         else
         {
             head.AddForce(transform.right * 150, ForceMode.Acceleration);
+            bodyAnimator.SetBool("IsMoving", true);
         }
 
         RaycastHit hit; //creates empty hit
