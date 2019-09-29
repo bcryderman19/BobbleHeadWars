@@ -36,6 +36,12 @@ public class Gun : MonoBehaviour
         {
             CancelInvoke("fireBullet");
         }
+
+        currentTime += Time.deltaTime; //increments time
+        if (currentTime > upgradeTime && isUpgraded == true)
+        {
+            isUpgraded = false;
+        }
     }
 
     private Rigidbody createBullet()

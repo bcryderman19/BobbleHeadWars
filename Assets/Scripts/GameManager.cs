@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public GameObject player; //hero
     public GameObject[] spawnPoints;
     public GameObject alien;
+    public GameObject upgradePrefab;
+
+    public Gun gun;
 
     public int maxAliensOnScreen; //how many aliens on screen at a time
     public int totalAliens; //# of aliens hero needs to kill to claim victory
@@ -15,23 +18,47 @@ public class GameManager : MonoBehaviour
 
     public float minSpawnTime; //rate the aliens appear
     public float maxSpawnTime;
+    public float upgradeMaxTimeSpawn = 7.5f;
 
     private int aliensOnScreen = 0; //will track # of aliens on screen .. whether to spawn or not
 
-    private float generatedSpawnTime = 0f; //track time between spawns
-    private float currentSpawnTime = 0f; //tack milliseconds since last spawn
+    private float generatedSpawnTime = 0.0f; //track time between spawns
+    private float currentSpawnTime = 0.0f; //tack milliseconds since last spawn
+    private float actualUpgradeTime = 0.0f;
+    private float currentUpgradeTime = 0.0f;
+
+    private bool spawnedUpgrade = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        actualUpgradeTime = Random.Range(upgradeMaxTimeSpawn - 3.0f, upgradeMaxTimeSpawn);
+        actualUpgradeTime = Mathf.Abs(actualUpgradeTime);
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentUpgradeTime += Time.deltaTime;
+        if (currentUpgradeTime > actualUpgradeTime)
+        {
+            // 1
+            if (!spawnedUpgrade)
+            {
+                // 2
+                int randomNumber = Random.Range(0, spawnPoints.Length - 1);
+                GameObject spawnLocation = spawnPoints[randomNumber];
+                // 3
+                GameObject upgrade = Instantiate(upgradePrefab) as GameObject;
+                Upgrade upgradeScript = upgrade.GetComponent<Upgrade>();
+                upgradeScript.gun = gun;
+                upgrade.transform.position = spawnLocation.transform.position;
+                // 4
+                spawnedUpgrade = true;
+                SoundManager.Instance.PlayOneShot(SoundManager.Instance.powerUpAppear);
+            }
+        }
         currentSpawnTime += Time.deltaTime; //time passed between frames
-
         if (currentSpawnTime > generatedSpawnTime) 
         {
             currentSpawnTime = 0;
