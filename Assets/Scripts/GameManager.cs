@@ -103,10 +103,15 @@ public class GameManager : MonoBehaviour
                     alienScript.target = player.transform; //sets target to hero current position
                     Vector3 targetRotation = new Vector3(player.transform.position.x,newAlien.transform.position.y, player.transform.position.z); //rotates alien towards hero
                     newAlien.transform.LookAt(targetRotation);
+                    alienScript.OnDestroy.AddListener(AlienDestroyed);
                 }
             }
         }
 
 
+    }
+    public void AlienDestroyed()
+    {
+        Debug.Log("dead alien");
     }
 }

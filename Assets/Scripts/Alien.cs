@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class Alien : MonoBehaviour
 {
     public Transform target; //where alien should go
     public float navigationUpdate; //m/s for when alien updates its path
+
+    public UnityEvent OnDestroy;
 
     private NavMeshAgent agent;
     private float navigationTime = 0; // tracks how much time has passed
