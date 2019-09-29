@@ -405,7 +405,7 @@ MonoBehaviour:
   alien: {fileID: 1083935419275552038, guid: 206e3118c74d89f43931b521ffd07c03, type: 3}
   upgradePrefab: {fileID: 105092, guid: 941d6224549424c91b1cf112b44ec0cb, type: 3}
   gun: {fileID: 1129798630}
-  maxAliensOnScreen: 50
+  maxAliensOnScreen: 20
   totalAliens: 50
   aliensPerSpawn: 3
   minSpawnTime: 0
@@ -618,6 +618,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -689,6 +690,20 @@ Transform:
   m_Father: {fileID: 466005850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9efe26825c6d3b24aac340ea97076054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDecay: 0.02
+  intensity: 0.3
 --- !u!1 &539506176
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,6 +769,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 50
+  hitForce:
+  - 0.1
+  - 0.2
+  - 0.3
   head: {fileID: 898643752}
   layerMask:
     serializedVersion: 2
