@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] spawnPoints;
     public GameObject alien;
     public GameObject upgradePrefab;
+    public GameObject deathFloor;
 
     public Gun gun;
 
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
     public float minSpawnTime; //rate the aliens appear
     public float maxSpawnTime;
     public float upgradeMaxTimeSpawn = 7.5f;
+
+    public Animator arenaAnimator;
 
     private int aliensOnScreen = 0; //will track # of aliens on screen .. whether to spawn or not
 
@@ -109,6 +112,7 @@ public class GameManager : MonoBehaviour
                     Vector3 targetRotation = new Vector3(player.transform.position.x,newAlien.transform.position.y, player.transform.position.z); //rotates alien towards hero
                     newAlien.transform.LookAt(targetRotation);
                     alienScript.OnDestroy.AddListener(AlienDestroyed);
+                    alienScript.GetDeathParticles().SetDeathFloor(deathFloor);
                 }
             }
         }
@@ -119,5 +123,17 @@ public class GameManager : MonoBehaviour
     {
         aliensOnScreen -= 1;
         totalAliens -= 1;
+
+        if (totalAliens == 0)
+        {
+            Invoke("endGame", 2.0f);
+        }
+    }
+
+    private void endGame()
+    {
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.
+        elevatorArrived);
+        arenaAnimator.SetTrigger("PlayerWon");
     }
 }
