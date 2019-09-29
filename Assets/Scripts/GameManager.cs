@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
     }
     public void AlienDestroyed()
     {
-        Debug.Log("dead alien");
+        aliensOnScreen -= 1;
+        totalAliens -= 1;
     }
 }
