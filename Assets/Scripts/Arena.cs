@@ -24,9 +24,7 @@ public class Arena : MonoBehaviour
         player.transform.parent = elevator.transform;
 
         player.GetComponent<PlayerController>().enabled = false;
-
         SoundManager.Instance.PlayOneShot(SoundManager.Instance.elevatorArrived);
-
         arenaAnimator.SetBool("OnElevator", true);
     }
 
